@@ -37,7 +37,7 @@ public class CustomerRepositoryOnJDBC implements CustomerRepository{
                 .mobileNumber(entity.getMobileNumber())
                 .address(entity.getAddress())
                 .legalId(entity.getLegalId())
-                .type(CustomerType.valueOf(entity.getType()))
+                //.type(CustomerType.valueOf(entity.getType()))
                 .build();
     }
 }

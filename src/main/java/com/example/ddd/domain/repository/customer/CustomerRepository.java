@@ -9,4 +9,3 @@ public interface CustomerRepository {
     Customer initialCustomer(Customer customer);
     Optional<Customer> findByMobileNumber(String mobileNumber);
 }
-//Gi4p1994@abc

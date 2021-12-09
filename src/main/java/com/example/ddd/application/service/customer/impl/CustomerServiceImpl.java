@@ -8,7 +8,6 @@ import com.example.ddd.domain.repository.customer.CustomerRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.Optional;
 
@@ -37,12 +36,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional(rollbackOn = Exception.class)
-    public Long registerCustomer(CustomerRequestDTO requestDTO) {
+    public Customer registerCustomer(CustomerRequestDTO requestDTO) {
         return customerRepository.
                 initialCustomer(
                         Customer.builder()
                                 .mobileNumber(requestDTO.getMobileNumber())
-                                .build())
-                .getId();
+                                .build());
     }
 }

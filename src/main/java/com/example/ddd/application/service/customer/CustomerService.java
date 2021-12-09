@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface CustomerService extends UserDetailsService {
     Optional<Customer> findByMobileNumber(String mobileNumber);
-    Long registerCustomer(CustomerRequestDTO requestDTO);
+    Customer registerCustomer(CustomerRequestDTO requestDTO);
 }

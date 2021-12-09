@@ -23,7 +23,7 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
     private static final String VALIDATED_DATE = "date";
-    private static final String secretKey = "IMFjdkYY7TTy6RfewQR4PK5jtm0iO3jfldasLJLH2332NLlhhLtuufFFgiioip90322XXXoifsolaHGGkafTUTu";
+    private static final String secretKey = "chukytaotokenjwttrenluonglanddingpage_cainaybimatnhaanhem";
     private static final int expireTime = 360000000;
 
     private static String formatDate(LocalDateTime date) {
@@ -41,7 +41,7 @@ public class JwtTokenProvider {
     public  String getMobileNumberFromToken(String token) throws BusinessException {
         try {
             JWTClaimsSet claims = getClaimsFromToken(token);
-            return  claims.getStringClaim("email");
+            return  claims.getStringClaim("mobileNumber");
         } catch (Exception e) {
             e.printStackTrace();
             throw new BusinessException(HttpStatus.UNAUTHORIZED, "Bạn không có quyền truy cập vào service");
