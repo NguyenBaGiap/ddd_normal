@@ -1,7 +1,7 @@
 package com.example.ddd.domain.repository.customer;
 
+import com.example.ddd.domain.model.customer.Address;
 import com.example.ddd.domain.model.customer.Customer;
-import com.example.ddd.domain.model.customer.CustomerType;
 import com.example.ddd.infrastructure.db.CustomerJPARepositoryInterface;
 import org.springframework.stereotype.Component;
 
@@ -36,7 +36,7 @@ public class CustomerRepositoryOnJDBC implements CustomerRepository{
                 .id(entity.getId())
                 .email(entity.getEmail())
                 .mobileNumber(entity.getMobileNumber())
-                .address(entity.getAddress())
+                .address(new Address(entity.getStreet(), entity.getCity()))
                 .legalId(entity.getLegalId())
                 .build();
     }

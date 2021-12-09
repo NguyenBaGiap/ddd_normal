@@ -10,6 +10,6 @@ public class Customer {
     private String email;
     private String mobileNumber;
     private String legalId;
-    private String address;
+    private Address address;
     private CustomerType type;
 }

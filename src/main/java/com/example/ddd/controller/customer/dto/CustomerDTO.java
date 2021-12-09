@@ -11,8 +11,6 @@ public class CustomerDTO {
     private String email;
     private String mobileNumber;
     private String pid;
-    private String address;
-    private String type;
 
     public static CustomerDTO apply(Customer customer) {
         return CustomerDTO
@@ -22,5 +20,15 @@ public class CustomerDTO {
                 .mobileNumber(customer.getMobileNumber())
                 .pid(customer.getLegalId())
                 .build();
+    }
+    public static Customer applyRequest(CustomerDTO dto) {
+        return Customer
+                .builder()
+                .id(dto.getId())
+                .email(dto.getEmail())
+                .mobileNumber(dto.getMobileNumber())
+                .legalId(dto.getPid())
+                .build();
+
     }
 }

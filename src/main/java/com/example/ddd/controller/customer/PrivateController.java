@@ -1,5 +1,6 @@
 package com.example.ddd.controller.customer;
 
+import com.example.ddd.application.service.ca.ProductCustomerAccountService;
 import com.example.ddd.controller.customer.dto.CustomerDTO;
 import com.example.ddd.domain.model.authentication.CustomUserDetails;
 import com.example.ddd.domain.model.customer.Customer;
@@ -20,14 +21,16 @@ import javax.validation.Valid;
 @Validated
 public class PrivateController {
     final AuthenticationManager authenticationManager;
+    final ProductCustomerAccountService productCustomerAccountService;
 
-    public PrivateController(AuthenticationManager authenticationManager) {
+    public PrivateController(AuthenticationManager authenticationManager, ProductCustomerAccountService productCustomerAccountService) {
         this.authenticationManager = authenticationManager;
+        this.productCustomerAccountService = productCustomerAccountService;
     }
     @RequestMapping(value = "/registers", method = RequestMethod.POST)
     public String registers(@RequestBody @Valid CustomerDTO requestDTO) {
         log.info("request CA: {}", requestDTO);
-        return "register cif, ca";
+        return productCustomerAccountService.openAccountEKYC(requestDTO);
     }
 
     @RequestMapping(value = "/customer/info", method = RequestMethod.GET)

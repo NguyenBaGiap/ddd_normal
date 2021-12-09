@@ -1,14 +1,14 @@
 package com.example.ddd.infrastructure.entity;
 
-import com.example.ddd.infrastructure.comon.BaseEntity;
+import com.example.ddd.domain.model.customer.Address;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Optional;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +16,13 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "CUSTOMER")
-public class Customer extends BaseEntity {
+public class Customer implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, columnDefinition = "number")
+    private Long id;
+
+
     @Column(name = "EMAIL", length = 100)
     private String email;
 
@@ -26,8 +32,11 @@ public class Customer extends BaseEntity {
     @Column(name = "LEGAL_ID", length = 100)
     private String legalId;
 
-    @Column(name = "ADDRESS", length = 100)
-    private String address;
+    @Column(name = "CITY", length = 100)
+    private String city;
+
+    @Column(name = "STREET", length = 100)
+    private String street;
 
     @Column(name = "TYPE", length = 100)
     private String type;
@@ -38,11 +47,11 @@ public class Customer extends BaseEntity {
                 .mobileNumber(customer.getMobileNumber())
                 .email(customer.getEmail())
                 .legalId(customer.getLegalId())
-                .address(customer.getAddress())
+                .city(Optional.ofNullable(customer.getAddress()).map(Address::getCity).orElse(null))
+                .street(Optional.ofNullable(customer.getAddress()).map(Address::getStreet).orElse(null))
                 .legalId(customer.getLegalId())
-                .type(customer.getType() != null ?customer.getType().name() : null)
+                .type(Optional.ofNullable(customer.getType()).map(Enum::name).orElse(null))
                 .build();
     }
-
 
 }
