@@ -1,1 +1,3 @@
-layer app
+Where your use cases are orchestrated and the transactional scopes are managed.
+e.g.: Customer register process.
+Implementation example: CustomerService (Interface) / CustomerServiceImpl (protected Impl)

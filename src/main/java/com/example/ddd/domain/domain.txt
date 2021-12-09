@@ -1,0 +1,3 @@
+Where your business rules are handled.
+e.g.: Register process: (request register, authorize, etc).
+Implementation example: Auth (AggregateRoot), Customer (AggregateRoot), Sercurity (Domain Services)

@@ -23,7 +23,7 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
     private static final String VALIDATED_DATE = "date";
-    private static final String secretKey = "chukytaotokenjwttrenluonglanddingpage_cainaybimatnhaanhem";
+    private static final String secretKey = "IMFjdkYY7TTy6RfewQR4PK5jtm0iO3jfldasLJLH2332NLlhhLtuufFFgiioip90322XXXoifsolaHGGkafTUTu";
     private static final int expireTime = 360000000;
 
     private static String formatDate(LocalDateTime date) {

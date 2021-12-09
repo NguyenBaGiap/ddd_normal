@@ -12,5 +12,4 @@ public class Customer {
     private String legalId;
     private String address;
     private CustomerType type;
-
 }

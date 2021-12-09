@@ -1,0 +1,4 @@
+Interfaces
+How you can deliver your software.
+e.g.: Rest Controllers, dto
+Implementation example: PublicController, PrivateController

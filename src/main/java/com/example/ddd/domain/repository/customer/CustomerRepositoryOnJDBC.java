@@ -33,11 +33,11 @@ public class CustomerRepositoryOnJDBC implements CustomerRepository{
     private Customer convertToCustomer(com.example.ddd.infrastructure.entity.Customer entity){
         return Customer
                 .builder()
+                .id(entity.getId())
                 .email(entity.getEmail())
                 .mobileNumber(entity.getMobileNumber())
                 .address(entity.getAddress())
                 .legalId(entity.getLegalId())
-                //.type(CustomerType.valueOf(entity.getType()))
                 .build();
     }
 }

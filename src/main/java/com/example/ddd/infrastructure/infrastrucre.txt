@@ -1,1 +1,3 @@
-connect database
+This layer acts as a supporting library for all the other layers.
+e.g.: Oracle Tables representation, Oracle Repositories implementation, etc.
+Implementation example: Persistence package

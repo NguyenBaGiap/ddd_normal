@@ -11,7 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 @Configuration
-public class BeanConfiguration {
+// @Profile("development")
+public class OpenAPIConfiguration {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
