@@ -1,9 +1,9 @@
 package com.example.ddd.domain.services.sercurity;
 
+import com.example.ddd.domain.services.sercurity.jwt.JwtAuthenticationEntryPoint;
 import com.example.ddd.domain.services.sercurity.jwt.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,16 +13,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity(debug = true)
 public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
   final JwtAuthenticationFilter jwtAuthenticationFilter;
+  final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    public SecurityConfigurerAdapter(JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public SecurityConfigurerAdapter(JwtAuthenticationFilter jwtAuthenticationFilter, JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
     }
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
@@ -50,9 +51,7 @@ public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                     .exceptionHandling()
-                    .authenticationEntryPoint(
-                            new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)
-                    );
+                    .authenticationEntryPoint(jwtAuthenticationEntryPoint);
         security.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
     }

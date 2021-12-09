@@ -21,10 +21,6 @@ public class CustomUserDetails implements UserDetails {
         return Collections.singleton(new SimpleGrantedAuthority("ROLE_CUSTOMER_API"));
     }
 
-    public static CustomUserDetails apply(Customer customer) {
-        return CustomUserDetails.builder().customer(customer).build();
-    }
-
     @Override
     public String getPassword() {
         return null;
