@@ -13,3 +13,5 @@ public class Customer {
     private Address address;
     private CustomerType type;
 }
+
+// Aggregate
